@@ -1,4 +1,4 @@
-﻿namespace MIS.API.Contracts.Routes
+﻿namespace Mis.Api.Contracts.Routes
 {
     public static class ApiRoutes
     {

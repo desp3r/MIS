@@ -1,4 +1,4 @@
-﻿namespace MIS.API.Contracts.Requests
+﻿namespace Mis.Api.Contracts.Requests
 {
     public class RegisterUserRequest
     {

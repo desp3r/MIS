@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using MIS.API.Data.Contexts;
-using MIS.API.Extensions;
+using Mis.Api.Data.Contexts;
+using Mis.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
