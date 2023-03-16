@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MIS.Api.Controllers.Base;
 using MIS.Business.Interfaces;
+using MIS.Business.Models.User;
 
 namespace Mis.Api.Controllers
 {
@@ -21,7 +22,6 @@ namespace Mis.Api.Controllers
         [HttpPost(ApiRoutes.Identity.Register)]
         public async Task<IActionResult> RegisterUser([FromBody] RegisterUserRequest request)
         {
-            var registrationResult = await _identityService.RegisterUser(request);
             return Ok();
         }
 

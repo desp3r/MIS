@@ -15,8 +15,8 @@ namespace MIS.Data.Models
         [MaxLength(50)]
         public string LastName { get; set; } = string.Empty!;
         [MaxLength(50)]
-        public string MiddleName { get; set } = string.Empty!;
-        public DateOnly BirthDate { get; set; }
+        public string MiddleName { get; set; } = string.Empty!;
+        public DateTime BirthDate { get; set; }
 
         public DateTime? CreatedAt { get; set; } = null!;
         public DateTime? UpdatedAt { get; set; } = null!;

@@ -14,9 +14,7 @@ namespace MIS.Data.Extensions
         {
             services.AddDbContext<MisContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("MisDatabase"))
-                    .UseCamelCaseNamingConvention()
                     .ConfigureWarnings(c => c.Ignore(CoreEventId.MultipleNavigationProperties))
-
                     .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTrackingWithIdentityResolution)
                     .EnableSensitiveDataLogging());
 

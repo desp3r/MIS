@@ -17,7 +17,7 @@ namespace MIS.Data.Models
         [MaxLength(50)]
         public string LastName { get; set; } = string.Empty!;
         [MaxLength(50)]
-        public string MiddleName { get; set } = string.Empty!;
+        public string MiddleName { get; set; } = string.Empty!;
 
         public EmployeeType EmployeeType { get; set; } = 0!;
 
