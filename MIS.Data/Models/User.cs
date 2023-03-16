@@ -7,8 +7,13 @@ namespace MIS.API.Data.Models
     {
         public Guid Id { get; set; }
 
+        [MaxLength(50)]
         public string Email { get; set; } = null!;
+
+        [MaxLength(20)]
         public string Phone { get; set; } = null!;
+
+        [MaxLength(30)]
         public string Password { get; set; } = null!;
 
         public DateTime? CreatedAt { get; set; } = null!;

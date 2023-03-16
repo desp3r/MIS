@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using MIS.API.Data.Contexts;
 using MIS.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddServices(builder.Configuration);
+
+// Add connection to database
+string connection = builder.Configuration.GetConnectionString("MisDatabase");
+builder.Services.AddDbContext<MisContext>(options => options.UseSqlServer(connection));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
