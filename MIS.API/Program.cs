@@ -1,4 +1,3 @@
-using Mis.Api.Extensions;
 using MIS.Api.Extensions;
 using MIS.Business.Extensions;
 using MIS.Data.Extensions;
@@ -13,6 +12,7 @@ builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
     config.SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: false, reloadOnChange: true);
 });
+
 
 builder.Logging.AddConfiguration(builder.Configuration);
 builder.Logging.AddSerilog();
