@@ -1,6 +1,6 @@
 ﻿namespace MIS.Business.Interfaces
 {
-    internal interface IIdentityService
+    public interface IIdentityService
     {
     }
 }

@@ -16,6 +16,8 @@ namespace MIS.Data.Models
         [MaxLength(30)]
         public string Password { get; set; } = null!;
 
+        public bool IsVerified { get; set; } = false;
+
         public DateTime? CreatedAt { get; set; } = null!;
         public DateTime? UpdatedAt { get; set; } = null!;
 

@@ -19,16 +19,11 @@ builder.Logging.AddSerilog();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
 // Add Authentification here
 builder.Services.AddMisData(builder.Configuration);
 builder.Services.AddMisBusinessServices(builder.Configuration);
 builder.Services.AddAutoMapper();
-
-
-// Add services to the container.
-
-builder.Services.AddServices(builder.Configuration);
-
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
