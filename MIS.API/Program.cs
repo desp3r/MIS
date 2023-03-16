@@ -1,3 +1,4 @@
+using Mis.Api.Extensions;
 using MIS.Api.Extensions;
 using MIS.Business.Extensions;
 using MIS.Data.Extensions;
@@ -5,42 +6,35 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args).ConfigureSerilog();
 
-builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
-{
-    config.Sources.Clear();
-
-    config.SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: false, reloadOnChange: true);
-});
-
-
 builder.Logging.AddConfiguration(builder.Configuration);
 builder.Logging.AddSerilog();
+builder.Services.AddSwaggerModule(builder.Configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddAuthentication(builder.Configuration);
 
-// Add Authentification here
 builder.Services.AddMisData(builder.Configuration);
 builder.Services.AddMisBusinessServices(builder.Configuration);
 builder.Services.AddAutoMapper();
 
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseCustomExceptionHandler();
+
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerModule();
 }
 
-app.UseAuthorization();
-
+app.UseHttpsRedirection();
+app.UseSerilogRequestLogging();
 app.MapControllers();
+app.UseRouting();
+app.UseAuthorization();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

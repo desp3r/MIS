@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Serilog;
+using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Net;
 
 namespace MIS.Api.Extensions
@@ -65,6 +66,25 @@ namespace MIS.Api.Extensions
                     Message = error?.Message ?? string.Empty
                 });
             }));
+
+            return app;
+        }
+
+        public static IApplicationBuilder UseSwaggerModule(this IApplicationBuilder app)
+        {
+            app.UseSwagger(c =>
+            {
+                c.RouteTemplate = "swagger/{documentname}/swagger.json";
+            });
+
+            app.UseSwaggerUI(config =>
+            {
+                config.DisplayRequestDuration();
+                config.DefaultModelsExpandDepth(-1);
+                config.DocExpansion(DocExpansion.None);
+                config.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                config.RoutePrefix = "swagger";
+            });
 
             return app;
         }
