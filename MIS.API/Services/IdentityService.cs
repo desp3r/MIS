@@ -1,7 +1,7 @@
-﻿using MIS.Contracts.Requests;
-using MIS.Contracts.Responses;
+﻿using MIS.API.Contracts.Requests;
+using MIS.API.Contracts.Responses;
 
-namespace MIS.Services
+namespace MIS.API.Services
 {
     public interface IIdentityService
     {

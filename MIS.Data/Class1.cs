@@ -1,4 +1,4 @@
-﻿namespace MIS.Data
+﻿namespace MIS.API.Data
 {
     public class Class1
     {

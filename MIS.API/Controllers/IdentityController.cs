@@ -1,11 +1,11 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
-using MIS.Contracts.Requests;
-using MIS.Contracts.Routes;
-using MIS.Controllers.BaseController;
-using MIS.Services;
+using MIS.API.Contracts.Requests;
+using MIS.API.Contracts.Routes;
+using MIS.API.Controllers.BaseController;
+using MIS.API.Services;
 
-namespace MIS.Controllers
+namespace MIS.API.Controllers
 {
     public class IdentityController : BaseApiController
     {

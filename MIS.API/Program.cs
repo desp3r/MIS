@@ -1,4 +1,4 @@
-using MIS.Extensions;
+using MIS.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
-﻿using MIS.Services;
+﻿using MIS.API.Services;
 
-namespace MIS.Extensions
+namespace MIS.API.Extensions
 {
     public static class ServiceCollectionExtensions
     {

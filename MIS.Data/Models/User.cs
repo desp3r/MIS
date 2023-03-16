@@ -1,7 +1,7 @@
-﻿using MIS.Data.Interfaces;
+﻿using MIS.API.Data.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
-namespace MIS.Data.Models
+namespace MIS.API.Data.Models
 {
     public class User : IEntity
     {

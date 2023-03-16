@@ -1,4 +1,4 @@
-﻿namespace MIS.Contracts.Responses
+﻿namespace MIS.API.Contracts.Responses
 {
     public class RegisterUserResponse
     {
