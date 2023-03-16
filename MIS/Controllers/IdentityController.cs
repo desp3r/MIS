@@ -23,7 +23,7 @@ namespace MIS.Controllers
         [HttpPost(ApiRoutes.Identity.Register)]
         public async Task<IActionResult> RegisterUser([FromBody] RegisterUserRequest request)
         {
-            var registrationResult = await _identityService.RegisterUser()
+            var registrationResult = await _identityService.RegisterUser(request);
             return Ok();
         }
 
