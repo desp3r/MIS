@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Mis.Api.Controllers.BaseController
+namespace MIS.Api.Controllers.Base
 {
     public abstract class BaseApiController : ControllerBase
     {

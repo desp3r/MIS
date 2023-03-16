@@ -1,9 +1,8 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
 using Mis.Api.Contracts.Requests;
-using Mis.Api.Contracts.Routes;
-using Mis.Api.Controllers.BaseController;
 using Mis.Api.Services;
+using MIS.Api.Controllers.Base;
 
 namespace Mis.Api.Controllers
 {

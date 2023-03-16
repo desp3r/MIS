@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Mis.Api.Data.Models;
+using MIS.Data.Models;
 
-namespace Mis.Api.Data.Contexts
+namespace MIS.Data.Contexts
 {
     public class MisContext : DbContext
     {

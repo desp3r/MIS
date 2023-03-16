@@ -1,4 +1,4 @@
-﻿namespace Mis.Api.Data.Interfaces
+﻿namespace MIS.Data.Interfaces
 {
     public interface IEntity
     {

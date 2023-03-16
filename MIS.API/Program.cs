@@ -1,17 +1,35 @@
-using Microsoft.EntityFrameworkCore;
-using Mis.Api.Data.Contexts;
 using Mis.Api.Extensions;
+using MIS.Api.Extensions;
+using MIS.Business.Extensions;
+using MIS.Data.Extensions;
+using Serilog;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args).ConfigureSerilog();
+
+builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+{
+    config.Sources.Clear();
+
+    config.SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: false, reloadOnChange: true);
+});
+
+builder.Logging.AddConfiguration(builder.Configuration);
+builder.Logging.AddSerilog();
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+// Add Authentification here
+builder.Services.AddMisData(builder.Configuration);
+builder.Services.AddMisBusinessServices(builder.Configuration);
+builder.Services.AddAutoMapper();
+
 
 // Add services to the container.
 
-builder.Services.AddControllers();
 builder.Services.AddServices(builder.Configuration);
 
-// Add connection to database
-string connection = builder.Configuration.GetConnectionString("MisDatabase");
-builder.Services.AddDbContext<MisContext>(options => options.UseSqlServer(connection));
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
