@@ -1,6 +1,6 @@
 ﻿namespace MIS.Data.Enums
 {
-    public enum AppointmentStatuses
+    public enum AppointmentStatus
     {
         Draft = 1, 
         Approved,
