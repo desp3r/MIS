@@ -1,4 +1,5 @@
-﻿using MIS.Data.Interfaces;
+﻿using MIS.Data.Enums;
+using MIS.Data.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
 namespace MIS.Data.Models
@@ -15,7 +16,7 @@ namespace MIS.Data.Models
 
         [MaxLength(30)]
         public string Password { get; set; } = null!;
-
+        public UserType UserType { get; set; }
         public bool IsVerified { get; set; } = false;
 
         public DateTime? CreatedAt { get; set; } = null!;

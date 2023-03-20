@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MIS.Api.Controllers.Base;
 using MIS.Business.Interfaces;
@@ -19,11 +20,20 @@ namespace Mis.Api.Controllers
             _identityService = identityService;
         }
 
+        [AllowAnonymous]
         [HttpPost(ApiRoutes.Identity.Register)]
         public async Task<IActionResult> RegisterUser([FromBody] RegisterUserRequest request)
         {
-            return Ok();
+            var result = await _identityService.RegisterUserAsync(request);
+            return Ok(result);
         }
 
+        [AllowAnonymous]
+        [HttpPost(ApiRoutes.Identity.Login)]
+        public async Task<IActionResult> LoginUserAsync([FromBody] LoginUserRequest request)
+        {
+            var result = await _identityService.LoginUserAsync(request);
+            return Ok(result);
+        }
     }
 }
