@@ -7,6 +7,7 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args).ConfigureSerilog();
 
 builder.Logging.AddConfiguration(builder.Configuration);
+
 builder.Logging.AddSerilog();
 builder.Services.AddSwaggerModule(builder.Configuration);
 
