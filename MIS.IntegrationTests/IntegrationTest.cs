@@ -10,14 +10,17 @@ using MIS.Data.Contexts;
 using System.Net.Http.Json;
 using MIS.Api.Controllers.Base;
 using MIS.Business.Models.User;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Configuration;
 
 namespace MIS.IntegrationTests
 {
     public class IntegrationTest
     {
         protected readonly HttpClient TestClient;
+        protected readonly IConfiguration configuration;
 
-        protected IntegrationTest() 
+        protected IntegrationTest(IConfiguration configuration) 
         {
             var appFactory = new WebApplicationFactory<Program>()
                 .WithWebHostBuilder(builder =>
@@ -26,13 +29,15 @@ namespace MIS.IntegrationTests
                     {
                         services.RemoveAll(typeof(MisContext));
                         services.AddDbContext<MisContext>(options =>
-                        {
-                            options.UseInMemoryDatabase("TestDB");
-                        });
+                        options.UseSqlServer(configuration.GetConnectionString("TestMisDatabase"))
+                            .ConfigureWarnings(c => c.Ignore(CoreEventId.MultipleNavigationProperties))
+                            .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTrackingWithIdentityResolution)
+                            .EnableSensitiveDataLogging());
                     });
                 });
 
             TestClient = appFactory.CreateClient();
+            this.configuration = configuration;
         }
 
         protected async Task AuthenticateAsync()
